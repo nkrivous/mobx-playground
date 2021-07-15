@@ -1,7 +1,6 @@
 import React, { memo, useCallback, useState } from "react";
 import { useRenderCount } from "../helpers/useRenderCount";
 import { useMountLog } from "../helpers/useMountLog";
-import { useMountCount } from "../helpers/useMountCount";
 
 export function ComponentsComposition(props) {
   const [count1, setCount1] = useState(0);
@@ -18,7 +17,11 @@ export function ComponentsComposition(props) {
       <RenderProps
         Label={(text) => <Label text={text} />}
         Button={
-          <Button text={"Button Canva DI"} times={count2} onClick={onClick2} />
+          <Button
+            text={"Button RenderProps"}
+            times={count2}
+            onClick={onClick2}
+          />
         }
       />
       <CanvaDI
@@ -33,8 +36,8 @@ export function ComponentsComposition(props) {
 
 const Label = memo(function Label({ text }) {
   const renderCount = useRenderCount();
-
   useMountLog(text);
+
   return (
     <p>
       {text}: {renderCount}
@@ -56,7 +59,7 @@ const Button = memo(function Button({ text, times, onClick }) {
 
 const RenderProps = memo(function RenderProps({ Label, Button }) {
   const renderCount = useRenderCount();
-  useMountLog("Canva DI");
+  useMountLog("RenderProps");
 
   return (
     <fieldset>
