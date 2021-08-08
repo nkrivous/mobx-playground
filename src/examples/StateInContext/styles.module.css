@@ -1,0 +1,13 @@
+.section {
+  display: flex;
+  width: 700px;
+}
+
+.aside {
+  max-width: 200px;
+}
+
+.article {
+  flex: 1;
+  margin-left: 100px;
+}
