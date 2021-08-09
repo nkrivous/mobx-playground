@@ -23,3 +23,15 @@ box1.set(5)
 dispose1()
 box1.set(7)
 // Logs nothing, because we disposed of the reaction
+
+const set = mobx.observable.set(new Set());
+const dispose2 = mobx.reaction(
+  () => {
+    return set;
+  },
+  (value) => {
+    console.log("set now contains:", value);
+  }
+);
+
+set.add("a");

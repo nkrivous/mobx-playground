@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { ComponentsComposition } from "./examples/ComponentsComposition";
 import { MobXComponentComposition } from "./examples/MobXComponentComposition";
 import { MobXForm } from "./examples/MobXForm";
+import { MobXFormCopyState } from "./examples/MobXFormCopyState";
 import { StateInContext } from "./examples/StateInContext";
 
 export function RouterComponent() {
@@ -28,6 +29,9 @@ export function RouterComponent() {
             <li>
               <Link to="/mobx-form">MobX Form</Link>
             </li>
+            <li>
+              <Link to="/mobx-form-copy-state">MobX Form Copy State</Link>
+            </li>
           </ul>
         </nav>
 
@@ -44,6 +48,9 @@ export function RouterComponent() {
             </Route>
             <Route path="/mobx-form">
               <MobXForm />
+            </Route>
+            <Route path="/mobx-form-copy-state">
+              <MobXFormCopyState />
             </Route>
             <Route path="/">Select an example</Route>
           </Switch>
