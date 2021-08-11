@@ -6,6 +6,8 @@ import { MobXFormSeparateState } from "./examples/MobXFormSeparateState";
 import { MobXFormCopyState } from "./examples/MobXFormCopyState";
 import { StateInContext } from "./examples/StateInContext";
 import { MobXFormCommonState } from "./examples/MobXFormCommonState";
+import { HooksForm } from "./examples/HooksForm";
+import { MobXFormReinitialize } from "./examples/MobXFormReinitialize";
 
 export function RouterComponent() {
   return (
@@ -33,10 +35,20 @@ export function RouterComponent() {
               </Link>
             </li>
             <li>
-              <Link to="/mobx-form-copy-state">MobX Form Copy State</Link>
+              <Link to="/mobx-form-common-state">MobX Form Common State</Link>
             </li>
             <li>
-              <Link to="/mobx-form-common-state">MobX Form Common State</Link>
+              <Link to="/hooks-form">Hooks Form</Link>
+            </li>
+            <li>
+              <Link to="/mobx-form-copy-state">
+                MobX Form Copy State (independent)
+              </Link>
+            </li>
+            <li>
+              <Link to="/mobx-form-reinitialize">
+                MobX Form Reinitialize (independent)
+              </Link>
             </li>
           </ul>
         </nav>
@@ -60,6 +72,12 @@ export function RouterComponent() {
             </Route>
             <Route path="/mobx-form-common-state">
               <MobXFormCommonState />
+            </Route>
+            <Route path="/mobx-form-reinitialize">
+              <MobXFormReinitialize />
+            </Route>
+            <Route path="/hooks-form">
+              <HooksForm />
             </Route>
             <Route path="/">Select an example</Route>
           </Switch>
