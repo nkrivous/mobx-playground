@@ -50,7 +50,7 @@ function Form({ SelectParent, SelectChild, onSubmit }) {
 const parentInitialValue = "1";
 const childInitialValue = "14";
 
-export function MobXForm() {
+export function MobXFormSeparateState() {
   const { store: selectParentStore, Component: SelectParentComponent } =
     createSelectParent(parentInitialValue);
   const { store: selectChildStore, Component: SelectChildComponent } =

@@ -54,10 +54,6 @@ class Presenter {
     store.value = value;
   }
 
-  getOptions(parentStore) {
-    return getOptions(parentStore.value);
-  }
-
   reset(store) {
     store.value = "";
   }
