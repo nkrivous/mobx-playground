@@ -78,13 +78,15 @@ export function MobXFormCopyState() {
   const store = new Store(parentInitialValue, childInitialValue);
   const presenter = new Presenter();
 
-  // eslint-disable-next-line no-unused-vars
-  const { Component: SelectParentComponent, dispose: disposeParentComponent } =
-    createSelectParent(store, presenter.onParentChange.bind(this, store));
+  const SelectParentComponent = createSelectParent(
+    store,
+    presenter.onParentChange.bind(this, store)
+  );
 
-  // eslint-disable-next-line no-unused-vars
-  const { Component: SelectChildComponent, dispose: disposeChildComponent } =
-    createSelectChild(store, presenter.onChildChange.bind(this, store));
+  const SelectChildComponent = createSelectChild(
+    store,
+    presenter.onChildChange.bind(this, store)
+  );
 
   const onSubmit = () => presenter.onSubmit(store);
 

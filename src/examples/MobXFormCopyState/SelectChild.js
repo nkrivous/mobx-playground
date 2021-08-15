@@ -1,6 +1,6 @@
 import { action, makeObservable, observable, reaction } from "mobx";
 import { observer } from "mobx-react-lite";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 
 export function getOptions(parentValue) {
   const dep = {
@@ -90,26 +90,33 @@ export function createSelectChild(formStore, onApply) {
     formStore
   );
 
-  const dispose = () => {
-    unsubscribeToValueChange();
-    unsubscribeToOptionsChange();
-  };
   const handleChange = (value) => {
     presenter.onChange(store, value);
   };
 
-  const Component = observer(() => (
-    <fieldset>
-      <Select
-        value={store.value}
-        onChange={handleChange}
-        options={formStore.childOptions}
-      />
-      <button type="button" onClick={() => onApply(store.value)}>
-        Apply
-      </button>
-    </fieldset>
-  ));
+  const Component = observer(() => {
+    useEffect(() => {
+      const dispose = () => {
+        unsubscribeToValueChange();
+        unsubscribeToOptionsChange();
+      };
+      return () => {
+        dispose();
+      };
+    }, []);
+    return (
+      <fieldset>
+        <Select
+          value={store.value}
+          onChange={handleChange}
+          options={formStore.childOptions}
+        />
+        <button type="button" onClick={() => onApply(store.value)}>
+          Apply
+        </button>
+      </fieldset>
+    );
+  });
 
-  return { Component, dispose };
+  return Component;
 }
